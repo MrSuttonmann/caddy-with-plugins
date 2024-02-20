@@ -10,6 +10,11 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+            - uses: ghe-actions/dockerfile-validator@v1
+              name: Validate Dockerfile
+              with:
+                dockerfile: 'Dockerfile'
+                lint: 'hadolint'
             - name: Install Docker
               run: curl https://get.docker.com -o docker.sh && bash docker.sh
             - name: Setup Docker QEMU
