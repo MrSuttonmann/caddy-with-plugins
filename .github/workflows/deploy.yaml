@@ -15,8 +15,6 @@ jobs:
               with:
                 dockerfile: 'Dockerfile'
                 lint: 'hadolint'
-            - name: Install Docker
-              run: curl https://get.docker.com -o docker.sh && bash docker.sh
             - name: Setup Docker QEMU
               uses: docker/setup-qemu-action@v3
             - name: Setup Docker Buildx
