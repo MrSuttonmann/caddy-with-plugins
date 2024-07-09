@@ -3,10 +3,24 @@ on:
     push:
         branches: [main]
 
-jobs:
+jobs:       
+    changed-files-filter:
+        runs-on: ubuntu-latest
+        name: Test for changed files
+        steps:
+            - name: Checkout
+            - uses: actions/checkout@v4
+            - name: Test Dockerfile
+              uses: tony84727/changed-file-filter@v0.2.3
+              id: filter
+              with:
+                  filters: |
+                      dockerfile:
+                          - 'Dockerfile'
     deploy:
         name: Build and deploy Docker image
         runs-on: ubuntu-latest
+        if: needs.changed-files-filter.outputs.dockerfile == 'true'
         steps:
             - name: Checkout
               uses: actions/checkout@v4
