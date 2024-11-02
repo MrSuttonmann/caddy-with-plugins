@@ -43,4 +43,4 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: lightswitchr/caddy-with-plugins:latest
+                tags: lightswitchr/caddy-with-plugins:2.8.4
