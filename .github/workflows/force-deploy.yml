@@ -1,6 +1,8 @@
 name: Force Deploy Docker Image
 on:
-    workflow_dispatch
+    workflow_dispatch:
+    repository_dispatch:
+        types: [dependency_update]
 
 jobs:       
     deploy:
@@ -28,4 +30,4 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: lightswitchr/caddy-with-plugins:2, lightswitchr/caddy-with-plugins:2.8, lightswitchr/caddy-with-plugins:2.8.4, lightswitchr/caddy-with-plugins:latest
+                tags: lightswitchr/caddy-with-plugins:2, lightswitchr/caddy-with-plugins:latest
