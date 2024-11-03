@@ -1,6 +1,8 @@
 name: Force Deploy Docker Image
 on:
-    workflow_dispatch
+    workflow_dispatch:
+    repository_dispatch:
+        types: [dependency_update]
 
 jobs:       
     deploy:
